@@ -4,7 +4,9 @@ namespace :jobs do
     loop do
       puts 'Pushing job to the queue'
       # RedisWorkerWithSync.perform_async # Works without patched sidekiq
-      RedisWorker.perform_async
+      20.times do
+        RedisWorker.perform_async
+      end
       sleep 1
     end
   end
